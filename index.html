@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Iframe with Widgets</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            width: 100%;
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        .sidebar {
+            width: 22%;
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .widget {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .iframe-container {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: white;
+            z-index: 10;
+        }
+        .stock-marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            display: block;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Welcome to Your Auto Insurance Portal</div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="widget" id="weather-widget">Loading weather...</div>
+            <div class="widget">News Feed</div>
+            <div class="widget">
+                <marquee class="stock-marquee" id="stock-ticker">Loading stock data...</marquee>
+            </div>
+            <div class="widget">Recent Headlines</div>
+			<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
+  {
+  "colorTheme": "light",
+  "dateRange": "12M",
+  "exchange": "US",
+  "showChart": true,
+  "locale": "en",
+  "width": "100%",
+  "height": "100%",
+  "largeChartUrl": "",
+  "isTransparent": false,
+  "showSymbolLogo": false,
+  "showFloatingTooltip": false,
+  "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+  "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+  "gridLineColor": "rgba(240, 243, 250, 0)",
+  "scaleFontColor": "rgba(15, 15, 15, 1)",
+  "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+  "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+  "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+  "symbolActiveColor": "rgba(41, 98, 255, 0.12)"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+            <div class="widget">Trending Topics</div>
+        </div>
+        <div class="iframe-container">
+            <div class="iframe-overlay"></div>
+            <iframe id="myIframe" src="https://dv5.answerfinancial.com/"></iframe>
+        </div>
+        <div class="sidebar">
+            <div class="widget">To-Do List</div>
+            <div class="widget">Quick Links</div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100 Cash CFD"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+        </div>
+    </div>
+    <script>
+        function fetchWeather() {
+            $.get("https://wttr.in/?format=%C+%t", function(data) {
+                $("#weather-widget").text("Weather: " + data);
+            }).fail(function() {
+                $("#weather-widget").text("Unable to fetch weather");
+            });
+        }
+        
+        function fetchStockTicker() {
+            $.get("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd", function(data) {
+                let btc = data.bitcoin.usd;
+                let eth = data.ethereum.usd;
+                $("#stock-ticker").text(`BTC: $${btc} | ETH: $${eth}`);
+            }).fail(function() {
+                $("#stock-ticker").text("Unable to fetch stock data");
+            });
+        }
+        
+        fetchWeather();
+        fetchStockTicker();
+        setInterval(fetchWeather, 60000);
+        setInterval(fetchStockTicker, 60000);
+    </script>
+</body>
+</html>
