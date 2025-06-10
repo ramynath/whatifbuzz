@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Costco Insurance</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            header .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            header nav a {
+                color: #fff;
+                margin-left: 1.5rem;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                header nav a:hover {
+                    text-decoration: underline;
+                }
+
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+            .content h1 {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .content p {
+                margin-bottom: 1.5rem;
+                color: #555;
+            }
+
+        .iframe-container iframe {
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .shop-insurance-btn {
+            background-color: #003366; /* Costco red */
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.75rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .shop-insurance-btn:hover {
+                background-color: #b80029;
+                transform: translateY(-2px);
+            }
+
+            .shop-insurance-btn:active {
+                transform: translateY(1px);
+            }
+
+        .shop-insurance-jane-btn {
+            background: linear-gradient(135deg, #0f8b8d, #145374); /* Teal to deep blue */
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+            .shop-insurance-jane-btn:hover {
+                background: linear-gradient(135deg, #11999e, #1f4068);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .shop-insurance-jane-btn:active {
+                transform: translateY(1px);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+            position: relative;
+        }
+
+            footer p {
+                margin: 0;
+                font-size: 0.9rem;
+            }
+
+        @@media (max-width: 768px) {
+            header, footer {
+                padding: 1rem;
+            }
+
+                header .logo {
+                    font-size: 1.2rem;
+                }
+
+                header nav a {
+                    margin-left: 1rem;
+                }
+
+            .content {
+                padding: 1rem;
+            }
+        }
+
+    </style>
+
+    <script src="https://pp.answerfinancial.com/Javascripts/widget.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Register an event listener for the widget's event
+            window.onWidgetEvent('messageReceived', function (data) {
+                if (data.close == true) {
+                    window.closeWidget();
+                    document.getElementById('AddWidgetDeeplink').style.display = 'block';
+                    document.getElementById('AddWidget').style.display = 'block';
+                }
+            });
+
+            // Add a click event listener to the button to load the widget
+            document.getElementById('AddWidgetDeeplink').addEventListener('click', function () {
+                // Assuming addWidget function takes parameters for configuration and the target selector
+                window.addWidget({ FirstName: 'Jane', LastName: 'Fonda', ZipCode: "76308", PhoneNumber: "8185141234", Email: "jane2453@gmail.com", AffinityGroup: 'retail' }, '#divWidgetParent');
+                document.getElementById('AddWidgetDeeplink').style.display = 'none';
+                document.getElementById('AddWidget').style.display = 'none';
+            });
+
+            document.getElementById('AddWidget').addEventListener('click', function () {
+                // Assuming addWidget function takes parameters for configuration and the target selector
+                window.addWidget({ AffinityGroup: 'retail' }, '#divWidgetParent');
+                document.getElementById('AddWidgetDeeplink').style.display = 'none';
+                document.getElementById('AddWidget').style.display = 'none';
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <header>
+        <div class="logo">Costco Insurance</div>
+    </header>
+
+    <div class="content">
+        <h1>Get Your Costco Insurance Quote</h1>
+        <p>Use our trusted partner for <u>hot dogs</u> and now for insurance! Use the below to get your personalized insurance quote quickly and easily.</p>
+
+        <div class="iframe-container">
+
+            <div id="divWidgetParent"></div>
+
+            <button id="AddWidgetDeeplink" class="shop-insurance-jane-btn">
+                🛒 Shop for Insurance for Jane
+            </button>
+
+            <button id="AddWidget" class="shop-insurance-btn">
+                🛒 Shop for Insurance
+            </button>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Costco Insurance. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
